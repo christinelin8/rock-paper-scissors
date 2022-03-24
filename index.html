@@ -22,35 +22,66 @@
             }
             else {
                 return "scissors"
-            }
+        }   
+    }
 
         function round(playerSelection, computerSelection) {
-            //simulate a round of rock, paper, scissors
+         //simulate a round of rock, paper, scissors
+
             let playerWins;
             let computerWins;
 
             if (playerSelection === computerSelection) {
                 return "It's a tie!"
             }
-            
-
-
-
+            else if(playerSelection === "rock") {
+                if(computerSelection === "paper") {
+                    computerWins += 1;
+                    return "You lose this round, paper beats rock!"
+                }
+                else {
+                    playerWins += 1;
+                    return "I lose this round, rock beats scissors."
+                }
             }
-
-            const playerSelection = "rock";
-            const computerSelection = computerPlay();
-            console.log(round(playerSelection, computerSelection));
-
-
-
-
-
-
-
+            else if(playerSelection === "paper") {
+                if(computerSelection === "rock") {
+                    playerWins += 1;
+                    return "I lose this round, paper beats rock"
+                }
+                else {
+                    computerWins += 1;
+                    return "I win this round, scissors beats paper!"
+                }   
+            }
+            else { //playerSelection is scissors
+                if(computerSelection === "rock") {
+                    computerWins += 1;
+                    return "I win this round, rock beats scissors"
+                }
+                else {
+                    playerWins += 1;
+                    return "You win this round, scissors beats paper"
+                }
+            }
         }
 
-        console.log(computerPlay());
+        const playerSelection = "scissors";
+        const computerSelection = computerPlay();
+        console.log(round(playerSelection, computerSelection));
+
+        
+
+        function game(round) {
+            for(let i = 0; i < 5; i++) {
+                
+            }
+        }
+        
+
+        
+
+           
 
 
 
@@ -59,3 +90,16 @@
     
 </body>
 </html>
+
+
+
+    
+
+
+
+
+
+
+
+
+

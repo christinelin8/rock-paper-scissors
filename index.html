@@ -28,55 +28,82 @@
         function round(playerSelection, computerSelection) {
          //simulate a round of rock, paper, scissors
 
-            let playerWins;
-            let computerWins;
+            let playerWins = 0;
+            let computerWins = 1;
 
             if (playerSelection === computerSelection) {
-                return "It's a tie!"
+                console.log("It's a tie!");
+                return 2;
             }
             else if(playerSelection === "rock") {
                 if(computerSelection === "paper") {
-                    computerWins += 1;
-                    return "You lose this round, paper beats rock!"
+                    console.log("You lose this round, paper beats rock!");
+                    return computerWins;
+                    
                 }
                 else {
-                    playerWins += 1;
-                    return "I lose this round, rock beats scissors."
+                    console.log("I lose this round, rock beats scissors.");
+                    return playerWins;
+                    
                 }
             }
             else if(playerSelection === "paper") {
                 if(computerSelection === "rock") {
-                    playerWins += 1;
-                    return "I lose this round, paper beats rock"
+                    console.log("I lose this round, paper beats rock");
+                    return playerWins;
+                    
                 }
                 else {
-                    computerWins += 1;
-                    return "I win this round, scissors beats paper!"
+                    console.log("I win this round, scissors beats paper!");
+                    return computerWins;
+                    
                 }   
             }
             else { //playerSelection is scissors
                 if(computerSelection === "rock") {
-                    computerWins += 1;
-                    return "I win this round, rock beats scissors"
+                    console.log("I win this round, rock beats scissors");
+                    return computerWins;
+                    
                 }
                 else {
-                    playerWins += 1;
-                    return "You win this round, scissors beats paper"
+                    console.log("You win this round, scissors beats paper");
+                    return playerWins;
+                    
                 }
             }
         }
-
-        const playerSelection = "scissors";
-        const computerSelection = computerPlay();
-        console.log(round(playerSelection, computerSelection));
-
         
+        function game() {
+            let pCount = 0;
+            let cCount = 0;
 
-        function game(round) {
             for(let i = 0; i < 5; i++) {
-                
+                let ask = prompt("Player, make your move: ");
+                let askComp = computerPlay();
+
+                let winner = round(ask, askComp);
+
+                if(winner === 0) {
+                    pCount++;
+                }
+                else if(winner === 1) {
+                    cCount++;
+                }
+                else {
+                    i--;
+                }
+
+            }
+
+            if(pCount > cCount) {
+                console.log("Player wins: " + pCount);
+            }
+            else {
+                console.log("Computer wins: " + cCount);
             }
         }
+    
+        game();
         
 
         
